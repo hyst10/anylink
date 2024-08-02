@@ -46,7 +46,7 @@ jobs:
           ver=$(ls -la ./server)
           echo "server路径 $ver"
           cp -r web/ui server/ui
-          ver=$(ls -la ./server)
+          ver=$(ls -la ./server/ui)
           echo "UI路径 $ver"
           #touch ui/index.html
           echo 'This is an output message.'
