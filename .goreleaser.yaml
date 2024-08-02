@@ -7,6 +7,17 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
+  - id: "build"
+    #main: .
+    dir: ./server
+    hooks:
+      pre:
+        - cmd: go mod tidy
+          dir: ./server
+          output: true
+        - cmd: go generate
+          dir: ./server
+          output: true
   - env:
       - CGO_ENABLED=0
     goos:
