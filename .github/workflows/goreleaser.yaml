@@ -30,9 +30,7 @@ jobs:
         run: |
           yarn install
           yarn run build
-          ls -la
-          cd ./server
-          mkdir ui
+          mkdir /home/runner/work/server/ui
           cp -r web/ui server/ui
           touch ui/index.html
           echo 'This is an output message.'
