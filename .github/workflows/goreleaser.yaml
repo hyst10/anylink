@@ -46,9 +46,11 @@ jobs:
           ver=$(ls -la ./server)
           echo "server路径 $ver"
           cp -r web/ui server/ui
-          ver=$(ls -la ./server/ui)
+          ver=$(ls -la ./server/ui/ui)
           echo "UI路径 $ver"
           #touch ui/index.html
+          cd server
+          go mod tidy
           echo 'This is an output message.'
 
       
