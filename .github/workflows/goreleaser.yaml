@@ -43,6 +43,8 @@ jobs:
 
           #cd server;go mod tidy          
           mkdir ./server/ui
+          ver=$(ls -la ./server)
+          echo "当前路径 $ver"
           cp -r web/ui server/ui
           touch ui/index.html
           echo 'This is an output message.'
