@@ -30,19 +30,11 @@ jobs:
         run: |
           yarn install
           yarn run build
-          appVer=`cat version`
-          commitId=`git rev-parse HEAD`
-          echo "APP_VER=$appVer" >> $GITHUB_ENV
-          echo "commitId=$commitId" >> $GITHUB_ENV
           
-          echo $appVer > version_info
-          echo $commitId >> version_info
-          echo $GITHUB_REF >> version_info
-          echo $GITHUB_REF_NAME >> version_info
           #mkdir /home/runner/work/server/ui
           #cp -r web/ui server/ui
           #touch ui/index.html
-          #echo 'This is an output message.'
+          echo 'This is an output message.'
           
       - uses: actions/setup-go@v3
         with:
