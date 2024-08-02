@@ -30,7 +30,16 @@ jobs:
         run: |
           yarn install
           yarn run build
-          
+
+      - name: Pre bash
+        shell: bash
+        run: |
+          ver=$(cat version)
+          echo "当前版本 $ver"
+          ver=$(pwd)
+          echo "当前版本 $ver"   
+
+          #cd server;go mod tidy          
           #mkdir /home/runner/work/server/ui
           #cp -r web/ui server/ui
           #touch ui/index.html
