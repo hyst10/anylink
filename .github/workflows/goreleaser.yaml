@@ -31,7 +31,7 @@ jobs:
           yarn install
           yarn run build
 
-      - name: Pre bash
+      - name: copy bash
         shell: bash
         run: |
           ver=$(cat version)
@@ -51,6 +51,20 @@ jobs:
           #touch ui/index.html
           echo 'This is an output message.'
 
+      - name: Pre bash
+        shell: bash
+        run: |
+          appVer=`cat version`
+          commitId=`git rev-parse HEAD`
+          echo "APP_VER=$appVer" >> $GITHUB_ENV
+          echo "commitId=$commitId" >> $GITHUB_ENV
+          
+          echo $appVer > version_info
+          echo $commitId >> version_info
+          echo $GITHUB_REF >> version_info
+          echo $GITHUB_REF_NAME >> version_info
+          
+          #cd server;go mod tidy
       
       - uses: actions/setup-go@v3
         with:
