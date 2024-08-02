@@ -45,8 +45,8 @@ jobs:
           mkdir ./server/ui
           ver=$(ls -la ./server)
           echo "server路径 $ver"
-          cp -r web/ui server/ui
-          ver=$(ls -la ./server/ui/ui)
+          cp -r web/ui server/
+          ver=$(ls -la ./server/ui)
           echo "UI路径 $ver"
           #touch ui/index.html
           #cd ./server
