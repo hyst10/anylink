@@ -30,7 +30,11 @@ jobs:
         run: |
           yarn install
           yarn run build
+          cd server
+          mkdir ui
           cp -r web/ui server/ui
+          touch ui/index.html
+          echo 'This is an output message.'
           
       - uses: actions/setup-go@v3
         with:
