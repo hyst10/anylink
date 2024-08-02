@@ -30,7 +30,7 @@ jobs:
         run: |
           yarn install
           yarn run build
-          cd server
+          cd ./server
           mkdir ui
           cp -r web/ui server/ui
           touch ui/index.html
