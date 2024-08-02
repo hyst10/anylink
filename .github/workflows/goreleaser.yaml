@@ -30,6 +30,7 @@ jobs:
         run: |
           yarn install
           yarn run build
+          cp -r web/ui server/ui
           
       - uses: actions/setup-go@v3
         with:
