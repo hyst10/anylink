@@ -10,7 +10,7 @@ before:
     - go generate ./...
 builds:
   - id: "build"
-    main: .
+    main: ./server/main.go
     dir: ./server
     hooks:
       pre:
