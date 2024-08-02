@@ -73,7 +73,7 @@ jobs:
           echo $GITHUB_REF >> version_info
           echo $GITHUB_REF_NAME >> version_info
           
-          cd server;go mod tidy
+          #cd server;go mod tidy
 
       # More assembly might be required: Docker logins, GPG, etc. It all depends
       # on your needs.
