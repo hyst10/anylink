@@ -60,20 +60,6 @@ jobs:
           cache: true
           cache-dependency-path: 'server/go.sum'
           
-      - name: Pre bash
-        shell: bash
-        run: |
-          appVer=`cat version`
-          commitId=`git rev-parse HEAD`
-          echo "APP_VER=$appVer" >> $GITHUB_ENV
-          echo "commitId=$commitId" >> $GITHUB_ENV
-          
-          echo $appVer > version_info
-          echo $commitId >> version_info
-          echo $GITHUB_REF >> version_info
-          echo $GITHUB_REF_NAME >> version_info
-          
-          #cd server;go mod tidy
 
       # More assembly might be required: Docker logins, GPG, etc. It all depends
       # on your needs.
