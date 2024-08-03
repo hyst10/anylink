@@ -1,10 +1,12 @@
-name: Goo
+name: Go
 
 on:
+  workflow_dispatch:
+
   push:
-    branches: [ "master" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main", "dev" ]
 
 jobs:
 
