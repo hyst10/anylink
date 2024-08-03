@@ -15,7 +15,7 @@ type setopt >/dev/null 2>&1
 SCRIPT_NAME=`basename "$0"`
 FAILURES=""
 #SOURCE_FILE=`echo $@ | sed 's/\.go//'`
-SOURCE_FILE=`./server`
+SOURCE_FILE=`./server/main.go`
 
 echo "当前路径：${SOURCE_FILE} ！"
 CURRENT_DIRECTORY=${PWD##*/}
