@@ -18,19 +18,19 @@ jobs:
         go-version: 1.21
 
     - uses: actions/checkout@v3
-
+    
     - uses: actions/setup-node@v4
         with:
           node-version: '16'
           cache: 'yarn'
           cache-dependency-path: 'web/yarn.lock'
-      - name: Build web
+    - name: Build web
         working-directory: web
         run: |
           yarn install
           yarn run build
 
-      - name: copy bash
+    - name: copy bash
         shell: bash
         run: |
           ver=$(cat version)
@@ -51,10 +51,9 @@ jobs:
           #cd ./server
           #go mod tidy
           echo 'This is an output message.'
-
     - name: Build
       run: 
-        bash ./build.sh
+        bash ./buildall.sh
 
     # - name: Prepare Artifacts
     #   run: |
