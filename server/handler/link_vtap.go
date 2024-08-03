@@ -7,8 +7,7 @@ import (
 	"strings"
 	"syscall"
 	"unsafe"
-        #"log"
-	#"time"
+
 	"github.com/bjdgyc/anylink/base"
 	"github.com/bjdgyc/anylink/pkg/utils"
 	"github.com/bjdgyc/anylink/sessdata"
