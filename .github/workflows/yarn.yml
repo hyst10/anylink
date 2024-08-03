@@ -30,8 +30,7 @@ jobs:
         run: |
           yarn install
           yarn run build
-          ver=$(cat version)
-          echo "当前版本 $ver"
+
           ver=$(pwd)
           echo "当前路径 $ver"   
           ver=$(ls -la ./web/ui)
