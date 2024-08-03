@@ -1,0 +1,72 @@
+name: goreleaser
+  
+on:
+  push:
+    # run only against tags
+    tags:
+      - '*'
+  
+permissions:
+  contents: write
+  # packages: write
+  # issues: write
+  
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: git fetch --force --tags
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          cache-dependency-path: 'web/yarn.lock'
+      - name: Build web
+        working-directory: web
+        run: |
+          yarn install
+          yarn run build
+          zip -r assets ./dist/**
+
+      - name: copy bash
+        shell: bash
+        run: |
+          ver=$(cat version)
+          echo "当前版本 $ver"
+          ver=$(pwd)
+          echo "当前路径 $ver"   
+          ver=$(ls -la ./web)
+          echo "当前路径 $ver"
+
+          #cd server;go mod tidy          
+          mkdir ./server/ui
+          ver=$(ls -la ./server)
+          echo "server路径 $ver"
+          cp -r web/ui server/
+          ver=$(ls -la ./server/ui)
+          echo "UI路径 $ver"
+          #touch ui/index.html
+          #cd ./server
+          #go mod tidy
+          echo 'This is an output message.'
+    # 把assets.zip上传到仓库对应的发布版本Release上
+      - name: Update Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_ACCESS_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./assets.zip
+          asset_name: assets.zip
+          asset_content_type: application/zip
+            env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #FOLDER: build
+          # Your GoReleaser Pro key, if you are using the 'goreleaser-pro'
+          # distribution:
+          # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
