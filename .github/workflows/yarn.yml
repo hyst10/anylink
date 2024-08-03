@@ -36,6 +36,10 @@ jobs:
           ver=$(ls -la ./ui)
           echo "当前路径 $ver"
           zip -r assets ./ui/**
+          ver=$(ls -la)
+          echo "当前zip路径 $ver"
+
+          
       # 基于当前commit进行版本发布(Create a release)，tag_name是v前缀加上package.json的version值
       - name: Create GitHub Release
         # 此步骤中，版本发布后会返回对应的url，以供下面上传制品的步骤中读取使用
@@ -58,7 +62,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./assets.zip
+          asset_path: ./web/assets.zip
           asset_name: assets.zip
           asset_content_type: application/zip
           
