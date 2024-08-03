@@ -15,6 +15,7 @@ type setopt >/dev/null 2>&1
 SCRIPT_NAME=`basename "$0"`
 FAILURES=""
 SOURCE_FILE=`echo $@ | sed 's/\.go//'`
+echo "当前路径：${SOURCE_FILE} ！"
 CURRENT_DIRECTORY=${PWD##*/}
 OUTPUT="build/i-nuist-login"
 
