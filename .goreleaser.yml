@@ -2,11 +2,11 @@ project_name: anylink
 
 before:
   hooks:
-    - go mod tidy
+    #- go mod tidy
 
 builds:
-  - binary: GoMonitor
-    main: .
+  - binary: anylink
+    main: ./server
     env:
       - CGO_ENABLED=0
     goos:
